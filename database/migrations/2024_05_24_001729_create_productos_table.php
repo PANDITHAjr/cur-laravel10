@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre',100);
             $table->text('descripcion');
-            $table->char('categoria',2);
+            $table->char('categoria',50);
             $table->integer('cantida');
             $table->timestamps();
         });
