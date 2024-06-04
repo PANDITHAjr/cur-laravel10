@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\ProController;
+use App\Http\Controllers\ProductoController;
 
 Route::get('/', homeController::class);
 
@@ -14,11 +15,12 @@ Route::get('/', homeController::class);
 
 // route::get('mostrar/{variable}', [ProController::class, 'mostrar']);
 
-route::controller(ProController::class)->group(function(){
+route::controller(ProductoController::class)->group(function(){
 
-    route::get('mostrar/{variable}', 'mostrar');
-    route::get('crear', 'crear');
-    route::get('principal', 'principal');
+    route::get('producto/{variable}', 'mostrar')->name('producto.mostrar');
+    route::get('productos/crear', 'crear')->name('producto.crear');
+    route::get('productos/principal', 'principal')->name('producto.principal');
+    route::post('producto','store')->name('producto.store');
 
 });
 
