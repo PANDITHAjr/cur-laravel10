@@ -10,6 +10,6 @@
     <p><strong>Descripcion:</strong>{{ $producto->descripcion }}</p>
     <p><strong>Categoria:</strong>{{ $producto->categoria }}</p>
     <br><br>
-    <a href="{{ route('producto.principal') }}">VOLVER</a>
+    <a href="{{ route('producto.index') }}">VOLVER</a>
 
 @endsection

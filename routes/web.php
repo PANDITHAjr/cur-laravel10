@@ -17,10 +17,13 @@ Route::get('/', homeController::class);
 
 route::controller(ProductoController::class)->group(function(){
 
-    route::get('producto/{variable}', 'mostrar')->name('producto.mostrar');
-    route::get('productos/crear', 'crear')->name('producto.crear');
-    route::get('productos/principal', 'principal')->name('producto.principal');
+    route::get('producto/{variable}', 'show')->name('producto.show');
+    route::get('productos/create', 'create')->name('producto.create');
+    route::get('productos/index', 'index')->name('producto.index');
     route::post('producto','store')->name('producto.store');
+    route::get('producto/{id}/edit', 'edit')->name('producto.edit');
+    route::put('producto/{id}', 'update')->name('producto.update');
+    route::delete('producto/{id}', 'destroy')->name('producto.destroy');
 
 });
 

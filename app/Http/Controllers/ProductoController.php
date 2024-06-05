@@ -8,24 +8,41 @@ use Illuminate\Http\Request;
 class ProductoController extends Controller
 
 {
-    public function principal()
+    public function index()
     {
-        $producto= Producto::paginate(5);
+        // $producto= Producto::paginate(5);
+        $producto= Producto::all();
         // return $producto;
-        return view('productos.principal', ['prod'=>$producto]);
+        return view('productos.index', ['prod'=>$producto]);
     }
 
-    public function crear()
+    public function create()
     {
-        return view('productos.crear');
+        return view('productos.create');
+    }
+    public function edit($id)
+    {
+        $pro=Producto::find($id);
+        return view('productos.edit', compact('pro'));
     }
 
-    public function mostrar($variable){
+    public function update(Request $request, $id)
+    {
+        $pro=Producto::find($id);
+        $pro->nombre=$request->nombre;
+        $pro->precio=$request->precio;
+        $pro->descripcion=$request->descripcion;
+        $pro->categoria=$request->categoria;
+        $pro->cantida=$request->cantida;
+        return redirect()->route('producto.index');
+    }
+
+    public function show($variable){
 
         $producto=Producto::find($variable);
         // return $producto;
         // return view('productos.mostrar',compact('variable'));
-        return view('productos.mostrar', compact('producto'));
+        return view('productos.show', compact('producto'));
     }
     public function store(Request$request){
 
@@ -39,6 +56,12 @@ class ProductoController extends Controller
         //return $request->all();
 
         $pro->save();
-        return redirect()->route('producto.mostrar', $pro->id);
+        return redirect()->route('producto.show', $pro->id);
+    }
+    public function destroy($id)
+    {
+        $pro=Producto::find($id);
+        $pro->delete();
+        return redirect()->route('producto.index');
     }
 }
