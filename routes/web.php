@@ -5,7 +5,7 @@ use App\Http\Controllers\homeController;
 use App\Http\Controllers\ProController;
 use App\Http\Controllers\ProductoController;
 
-Route::get('home', homeController::class);
+Route::get('/', homeController::class);
 
 
 
