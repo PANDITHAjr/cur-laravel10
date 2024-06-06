@@ -5,7 +5,7 @@ use App\Http\Controllers\homeController;
 use App\Http\Controllers\ProController;
 use App\Http\Controllers\ProductoController;
 
-Route::get('/', homeController::class);
+Route::get('home', homeController::class);
 
 
 
@@ -17,13 +17,13 @@ Route::get('/', homeController::class);
 
 route::controller(ProductoController::class)->group(function(){
 
+    route::get('productos/index', 'index')->name('producto.index');
     route::get('producto/{variable}', 'show')->name('producto.show');
     route::get('productos/create', 'create')->name('producto.create');
-    route::get('productos/index', 'index')->name('producto.index');
     route::post('producto','store')->name('producto.store');
-    route::get('producto/{id}/edit', 'edit')->name('producto.edit');
+    route::get('producto/{prod}/edit', 'edit')->name('producto.edit');
     route::put('producto/{id}', 'update')->name('producto.update');
-    route::delete('producto/{id}', 'destroy')->name('producto.destroy');
+    route::get('producto/{id}/destroy', 'destroy')->name('producto.destroy');
 
 });
 
