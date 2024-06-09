@@ -1,4 +1,4 @@
-@extends('layouts.plantilla')
+<x-app-layout>
 
 @section('titulo', 'PRODUCTOS')
 
@@ -33,7 +33,7 @@
                         <th scope="col" class="px-6 py-4 font-medium text-gray-900"></th>
                     </tr>
                 </thead>
-                @foreach ($prod as $produ)
+                @foreach ($producto as $produ)
                     <tbody class="divide-y divide-gray-100 border-t border-gray-100">
                         <td class="px-6 py-4">{{ $produ->id }}</td>
                         <td class="px-6 py-4" style="color: red"><a
@@ -41,7 +41,7 @@
                         <td class="px-6 py-4">{{ $produ->cantida }}</td>
                         <td class="px-6 py-4">{{ $produ->precio }}</td>
                         <td class="px-6 py-4">{{ $produ->categoria }}</td>
-                        <td class="px-6 py-4">{{ $produ->descripcion }}</td>
+                        <td class="px-6 py-4">{{ $produ->descripcion}}</td>
                         <td class="px-6 py-4">
 
                             <ul role="list" class="divide-y divide-gray-100 rounded-md border border-gray-200">
@@ -49,7 +49,7 @@
 
                                     <button
                                         class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 border border-green-500 rounded"><a
-                                            href="{{ route('producto.index') }}">volver</a></button>
+                                            href="{{ route('producto.show', $produ) }}">Mostrar</a></button>
                                     <button
                                         class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-1 px-2 border border-yellow-500 rounded">
                                         <a href="{{ route('producto.edit', $produ) }}">Editar</a></button>
@@ -67,4 +67,4 @@
             </table>
         </div>
     </div>
-@endsection
+</x-app-layout>

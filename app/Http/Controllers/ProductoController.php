@@ -14,8 +14,9 @@ class ProductoController extends Controller
     {
         // $producto= Producto::paginate(5);
         $producto = Producto::all();
+        // $categoria = $producto->categoria_id;
         // return $producto;
-        return view('productos.index', ['prod' => $producto]);
+        return view('productos.index', compact('producto'));
     }
 
     public function create()
@@ -32,7 +33,7 @@ class ProductoController extends Controller
         $pro->descripcion = $request->descripcion;
         $pro->categoria = $request->categoria;
         $pro->cantida = $request->cantida;
-        // $pro->id_categoria = $request->input('id_categoria');
+        $pro->categoria_id = $request->input('id_categoria');
 
         //return $request->all();
 

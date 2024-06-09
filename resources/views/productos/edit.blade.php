@@ -1,8 +1,6 @@
-@extends('layouts.plantilla')
+<x-app-layout>
 
-@section('titulo', 'CREAR PRODUCTO')
-
-@section('contenido')
+@section('titulo', 'EDITAR')
 
 
     <style>
@@ -134,4 +132,4 @@
             })
         }
     </script>
-@endsection
+</x-app-layout>
